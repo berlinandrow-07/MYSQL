@@ -1,0 +1,70 @@
+CREATE DATABASE IMDB;
+USE IMDB;
+
+CREATE TABLE MOVIE(
+ MOVIE_ID INT AUTO_INCREMENT PRIMARY KEY,
+ MOVIE_NAME VARCHAR(50),
+ MEDIA_TYPE VARCHAR(50),
+ MEDIA_URL VARCHAR(200));
+ 
+INSERT INTO MOVIE VALUES
+(1,'AVATAR', 'IMAGE', 'https://en.wikipedia.org/wiki/File:Avatar_(2009_film)_poster.jpg'),
+(2,'Iron Man', 'VIDEO', 'https://www.youtube.com/watch?v=8ugaeA-nMTc'),
+(3,'Inception', 'VIDEO', 'https://www.youtube.com/watch?v=YoHD9XEInc0'),
+(4,'The Matrix', 'IMAGE', 'https://en.wikipedia.org/wiki/File:The_Matrix_Poster.jpg'),
+(5,'Interstellar', 'VIDEO', 'https://www.youtube.com/watch?v=zSWdZVtXT7E');
+------------------------------------------------------------------------------
+
+CREATE TABLE MULTIPLE_GENRE(
+MOVIE_ID INT,
+GENRE_ID INT AUTO_INCREMENT PRIMARY KEY,
+GENRE VARCHAR(200),
+FOREIGN KEY (MOVIE_ID) REFERENCES MOVIE(MOVIE_ID));
+
+INSERT INTO MULTIPLE_GENRE VALUES
+(1,1,'ACTION,Sci-Fi'),
+(2,2,'ACTION,Adventure'),
+(3,3,'ACTION,Sci-Fi,Thriller'),
+(4,4,'ACTION,Sci-Fi'),
+(5,5,'Adventure,Drama,Sci-Fi');
+-------------------------------------------------------------------------
+CREATE TABLE USERS(
+MOVIE_ID INT,
+USER_ID INT PRIMARY KEY ,
+REVIEWS VARCHAR (500),
+FOREIGN KEY (MOVIE_ID) REFERENCES MOVIE(MOVIE_ID)
+);
+INSERT INTO USERS (MOVIE_ID, USER_ID, REVIEWS) VALUES
+(1, 1, 'Amazing visuals, loved it'),
+(1, 2, 'Great story and effects.'),
+(2, 3, 'Iron Man is epic!'),
+(3, 4, 'Inception blew my mind.'),
+(5, 5, 'Classic sci-fi, timeless.'),
+(1, 6, 'Absolutely stunning visuals'),
+(1, 7, 'Great story and character development.'),
+(2, 8, 'Tony Stark is a legendary character, loved it'),
+(5, 9, 'Action-packed and entertaining from start to finish.'),
+(3, 10, 'Mind blowing plot, keeps you guessing');
+---------------------------------------------------------------------------------------
+CREATE TABLE ARTIST(
+MOVIE_ID INT,
+ARTIST_ID INT AUTO_INCREMENT PRIMARY KEY,
+ARTIST_NAME VARCHAR (200),
+SKILLS VARCHAR (200),
+ROLES VARCHAR(200),
+FOREIGN KEY (MOVIE_ID) REFERENCES MOVIE(MOVIE_ID)
+);
+
+INSERT INTO ARTIST VALUES
+(1,1, 'Jake Sully', 'Acting', 'Hero'),
+(2,2, 'Robert Downey Jr.', 'Acting', 'Hero – Tony Stark'),
+(3,3, 'Dom Cobb', 'Acting, Directing', 'Protagonist'),
+(4,4, 'Neo', 'Acting, Martial Arts', 'The One'),
+(5,5, 'Cooper', 'Acting, Space Expert', 'Astronaut');
+---------------------------------------------------------------------------------------------------
+SELECT * FROM MOVIE;
+SELECT MOVIE_NAME, GENRE FROM MOVIE M LEFT JOIN MULTIPLE_GENRE MG ON M.MOVIE_ID= MG.MOVIE_ID ;
+SELECT MOVIE_NAME, REVIEWS FROM MOVIE M LEFT JOIN USERS U ON M.MOVIE_ID= U.MOVIE_ID ;
+SELECT ARTIST_NAME,MOVIE_NAME, SKILLS FROM MOVIE M LEFT JOIN ARTIST A ON M.MOVIE_ID= A.MOVIE_ID ;
+SELECT ARTIST_NAME,MOVIE_NAME, ROLES FROM MOVIE M LEFT JOIN ARTIST A ON M.MOVIE_ID= A.MOVIE_ID ;
+
