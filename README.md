@@ -1,6 +1,6 @@
 # DATA INPUT
 <img width="952" height="270" alt="1" src="https://github.com/user-attachments/assets/2aff3e1f-e211-4159-932e-2b987c097169" />
-<img width="1574" height="617" alt="2" src="https://github.com/user-attachments/assets/27128218-3ca0-43b8-8d45-dda6d2fea72b" />
+<img width="1317" height="339" alt="2" src="https://github.com/user-attachments/assets/9fbd5b09-3017-47be-a5be-0cacc4819750" />
 <img width="1499" height="357" alt="3" src="https://github.com/user-attachments/assets/59ede141-f313-407d-bd71-7e8c71867e29" />
 <img width="1662" height="464" alt="4" src="https://github.com/user-attachments/assets/3b492e44-29a2-49b7-9998-19a8f3b24c92" />
 <img width="1583" height="413" alt="5" src="https://github.com/user-attachments/assets/158b20ed-acec-4422-8e52-8978faebf8d9" />
